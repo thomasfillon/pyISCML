@@ -30,7 +30,7 @@ class MpDecodeLikeMatlab(unittest.TestCase):
         dec = mat['dec']
         errors = mat['errors'].flatten()
 
-        (dec2, errors2) = ldpc.MpDecode(llr, H_rows, H_cols, 100, 0, 1, 1, bits);
+        (dec2, errors2) = ldpc.MpDecode(llr, H_rows, H_cols, 100, 0, 1, 1, bits)
         nt.assert_array_equal(errors2, errors)
         nt.assert_array_equal(dec2, dec)
 
@@ -44,7 +44,7 @@ class MpDecodeLikeMatlab(unittest.TestCase):
 class TestEncodeDecode(unittest.TestCase):
     def _testEncDec(self, rate, ln, dec_type):
         (H_rows, H_cols, P) = ldpc.InitializeWiMaxLDPC(rate, ln)
-        payload = (np.random.randn(rate * ln) < 0).astype(int)
+        payload = (np.random.randn(int(rate * ln)) < 0).astype(np.int32)
 
         encoded = ldpc.Encode(payload, H_rows, P)
         llr = 1-2*encoded
@@ -54,7 +54,7 @@ class TestEncodeDecode(unittest.TestCase):
         (decoded, errors) = ldpc.MpDecode(4*llr, H_rows, H_cols,
                                           max_iter=100, dec_type=0, r_scale_factor=1, q_scale_factor=1)
         nt.assert_array_equal(decoded[-1,:], encoded)
-        nt.assert_array_equal(decoded[-1, :rate*ln], payload)
+        nt.assert_array_equal(decoded[-1, :int(rate*ln)], payload)
 
     def test_1(self):
         rate = 5./6.

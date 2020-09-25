@@ -63,7 +63,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
 General Public License for more details.
 """
 
-    input_u = np.zeros(input_c.shape[0]/g.shape[0]-g.shape[1]+1, dtype=float)
+    input_u = np.zeros(input_c.shape[0]//g.shape[0]-g.shape[1]+1, dtype=float)
     assert code_type != 2, "Tail-biting not supported for SISO decode"
 
     decoded_u = np.zeros(input_u.shape)

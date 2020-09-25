@@ -11,8 +11,12 @@ codingExt = Extension("_pyISCML",
                       include_dirs=[numpy.get_include()],
                       define_macros=[('SWIG_PYTHON_INTERPRETER_NO_DEBUG', 1)],
                       language="c++",
+                      swig_opts=['-c++', '-py3', '-modern', '-I../include' , '-DSMALL_LONG'],
                       extra_compile_args=extra_compile_args)
 
 exts = [codingExt]
 
-setup(ext_modules=exts)
+setup(name="pyISCML",
+      ext_modules=exts,
+      version = '0.1',
+      description = """Python Bindings for Coded Modulation Library""")

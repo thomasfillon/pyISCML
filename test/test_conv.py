@@ -60,7 +60,7 @@ class TestEncodeDecode(unittest.TestCase):
 
     def test_halfRate(self):
         g = np.array([[1, 0, 0, 1, 1],
-                      [1, 1, 0, 1, 0]])
+                      [1, 1, 0, 1, 0]], dtype=np.int32)
         for code_type in [0, 1]:
             for decoder_type in range(5):
                 self._testEncDec(np.random.randn(1000) < 0, g, code_type=0, decoder_type=1)
@@ -68,7 +68,7 @@ class TestEncodeDecode(unittest.TestCase):
     def test_thirdRateRate(self):
         g = np.array([[1, 0, 0, 1, 1],
                       [1, 1, 0, 1, 0],
-                      [1, 0, 1, 0, 1]])
+                      [1, 0, 1, 0, 1]], dtype=np.int32)
         for code_type in [0, 1]:
             for decoder_type in range(5):
                 self._testEncDec(np.random.randn(1000) < 0, g, code_type=0, decoder_type=1)
